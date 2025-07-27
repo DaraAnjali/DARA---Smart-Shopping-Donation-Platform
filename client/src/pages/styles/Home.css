@@ -1,0 +1,210 @@
+.home-container {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* Hero Section */
+.home-hero {
+  background-image: url('/public/assets/hero.png');
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  display: flex;
+  padding: 4.5rem;
+  align-items: center;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-buttons button {
+  background-color: #53B6E8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.hero-buttons .donate {
+  background-color: #f26b38;
+}
+
+.hero-buttons button:hover {
+  background-color: #333;
+}
+
+/* Why DARA */
+.home-features {
+  padding: 2rem;
+  text-align: center;
+}
+
+.feature-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.feature-card {
+  background: #fefefe;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+}
+
+/* Product Section */
+.item-section {
+  padding: 2rem;
+  text-align: center;
+}
+
+.item-grid-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.item-card {
+  border: 1px solid #ddd;
+  padding: 0.5rem; /* ↓ reduce padding */
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #fff;
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-image-container {
+  margin-top: 0;   /* ↓ remove extra margin above image */
+  padding-top: 0;
+}
+
+.item-image-container img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.item-card:hover {
+  transform: scale(1.03);
+}
+
+.item-card img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.item-card:hover img {
+  transform: scale(1.05); 
+}
+.item-card.placeholder {
+  visibility: hidden;
+}
+
+.item-card h3 {
+  margin: 10px 0 5px;
+  font-size: 1.1rem;
+}
+
+.item-card .price, 
+.item-card .rating {
+  margin: 2px 0;
+  font-size: 0.95rem;
+}
+
+.item-card:hover img {
+  transform: scale(1.05);
+}
+
+.price {
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.rating {
+  color: #ffa500;
+}
+
+.add-to-cart {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #53B6E8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #3a9dc7;
+}
+
+/* Pagination */
+.pagination-buttons {
+  margin-top: 1.5rem;
+}
+
+.pagination-buttons button {
+  margin: 0 8px;
+  padding: 6px 12px;
+  background: #ddd;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

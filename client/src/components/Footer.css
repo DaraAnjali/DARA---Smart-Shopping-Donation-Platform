@@ -1,0 +1,38 @@
+
+/* Footer */
+.footer {
+  background-color: #f0f0f0;
+  padding: 2rem;
+  margin-top: 2rem;
+  color: #333;
+}
+
+.footer-logo {
+  text-align: center;
+}
+
+.footer-logo img {
+  width: 80px;
+  margin-bottom: 0.5rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.footer-links div {
+  margin: 10px;
+  max-width: 200px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+}
+

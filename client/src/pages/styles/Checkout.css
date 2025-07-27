@@ -1,0 +1,160 @@
+/* src/pages/Checkout.css */
+
+.checkout-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fefefe;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #444;
+}
+
+.checkout-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.checkout-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.checkout-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.checkout-item .details {
+  flex: 1;
+}
+
+.checkout-item .details h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.checkout-item .details p {
+  margin: 5px 0 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.checkout-summary {
+  text-align: right;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.checkout-summary p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.checkout-summary .discount {
+  color: green;
+}
+
+.checkout-summary h3 {
+  margin-top: 15px;
+  font-size: 20px;
+  color: #222;
+}
+
+.confirm-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.confirm-btn:hover {
+  background-color: #218838;
+}
+.donation-msg {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.code-input {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.code-input input {
+  padding: 10px;
+  font-size: 16px;
+  flex: 1;
+}
+
+.code-input button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.code-input button:hover {
+  background-color: #0056b3;
+}
+
+.code-message {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #444;
+}
+
+.code-input {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.code-input input {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+.code-input button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.code-input button:hover {
+  background-color: #0056b3;
+}
+
+.code-message {
+  margin: 5px 0;
+  font-size: 14px;
+}

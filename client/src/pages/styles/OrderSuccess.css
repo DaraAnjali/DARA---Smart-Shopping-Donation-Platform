@@ -1,0 +1,57 @@
+.order-success-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.order-success-container h2 {
+  color: #28a745;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.order-success-container p {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #444;
+}
+
+.order-success-container ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.order-success-container li {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-success-container h3 {
+  color: #222;
+  margin-top: 15px;
+}
+
+.donation-msg {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.order-success-container button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.order-success-container button:hover {
+  background-color: #0056b3;
+}

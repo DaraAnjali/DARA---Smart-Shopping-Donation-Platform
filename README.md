@@ -15,10 +15,9 @@ DARA is a full-stack e-commerce application built with the MERN stack. It offers
 
 🛠️ Tech Stack
 --------------
-Frontend:   React.js, Tailwind CSS  
+Frontend:   React.js
 Backend:    Node.js, Express.js  
-Database:   MongoDB, Mongoose  
-Others:     JWT, Cloudinary, dotenv
+Database:   MongoDB  
 
 🚀 Getting Started (Run Locally)
 -------------------------------

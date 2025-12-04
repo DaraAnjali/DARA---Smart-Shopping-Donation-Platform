@@ -1,3 +1,6 @@
+require('dotenv').config();
+const bcrypt = require('bcrypt');
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -29,7 +32,7 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
 // MongoDB connection
-mongoose.connect('mongodb://127.0.0.1:27017/dara_users')
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error(err));
 
@@ -50,6 +53,7 @@ app.post('/register', async (req, res) => {
   }
 });
 
+
 // Login route
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
@@ -58,7 +62,9 @@ app.post('/login', async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: "User not found" });
 
-    if (user.password !== password) return res.status(401).json({ message: "Incorrect password" });
+    // Compare hashed password
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) return res.status(401).json({ message: "Incorrect password" });
 
     res.json({ message: "Login successful", user });
   } catch (err) {
@@ -66,6 +72,7 @@ app.post('/login', async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
 
 // Generate code
 app.post('/generate-code', async (req, res) => {
@@ -130,21 +137,32 @@ app.post('/upload-donation', upload.single('image'), async (req, res) => {
   }
 
   const imagePath = path.join(__dirname, req.file.path);
-  const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+
+  // Use BASE_URL from env or fallback to localhost
+  const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
+  const imageUrl = `${BASE_URL}/uploads/${req.file.filename}`;
 
   try {
     // Call Vision API to detect labels
     const [result] = await client.labelDetection(imagePath);
     const labels = result.labelAnnotations.map(label => label.description.toLowerCase());
     console.log("Detected labels:", labels);
-    const clothKeywords = ['clothing', 'apparel', 'shirt', 'jeans', 'jacket', 't-shirt', 'pants', 'sweater', 'trouser', 'skirt', 'dress'];
+
+    const clothKeywords = [
+      'clothing', 'apparel', 'shirt', 'jeans', 'jacket', 't-shirt',
+      'pants', 'sweater', 'trouser', 'skirt', 'dress'
+    ];
 
     const isClothing = labels.some(label => clothKeywords.includes(label));
 
     if (!isClothing) {
-      return res.status(400).json({ success: false, message: 'Uploaded image does not appear to be clothing.' });
+      return res.status(400).json({
+        success: false,
+        message: 'Uploaded image does not appear to be clothing.'
+      });
     }
 
+    // Generate donation code
     const code = 'DONATE' + Math.floor(1000 + Math.random() * 9000);
 
     const newCode = new DonationCode({ code, userId });
@@ -160,7 +178,9 @@ app.post('/upload-donation', upload.single('image'), async (req, res) => {
   }
 });
 
-// Start server
-app.listen(5000, () => {
-  console.log('Server running on http://localhost:5000');
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });

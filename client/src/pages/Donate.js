@@ -37,11 +37,16 @@ const Donate = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post('http://localhost:5000/upload-donation', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      const response = await axios.post(
+  'https://dara-shopdonate-backend.onrender.com/upload-donation',
+  formData,
+  {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  }
+);
+
 
       const code = response.data.code;
       setOfferCode(code);

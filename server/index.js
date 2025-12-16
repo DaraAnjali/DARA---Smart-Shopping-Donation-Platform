@@ -44,16 +44,31 @@ app.post('/register', async (req, res) => {
 
   try {
     const existing = await User.findOne({ email });
-    if (existing) return res.status(400).json({ message: 'User already exists' });
+    if (existing) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
 
-    const user = new User({ name, email, password });
+    // 🔐 HASH PASSWORD
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = new User({
+      name,
+      email,
+      password: hashedPassword
+    });
+
     await user.save();
-    res.json({ message: 'User registered successfully' });
+
+    res.json({
+      message: 'User registered successfully',
+      user: { name: user.name, email: user.email }
+    });
   } catch (err) {
     console.error("Register error:", err);
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 
 // Login route
@@ -146,24 +161,24 @@ app.post('/upload-donation', upload.single('image'), async (req, res) => {
 
   try {
     // Call Vision API to detect labels
-    const [result] = await client.labelDetection(imagePath);
-    const labels = result.labelAnnotations.map(label => label.description.toLowerCase());
-    console.log("Detected labels:", labels);
+    // const [result] = await client.labelDetection(imagePath);
+    // const labels = result.labelAnnotations.map(label => label.description.toLowerCase());
+    // console.log("Detected labels:", labels);
 
-    const clothKeywords = [
-      'clothing', 'apparel', 'shirt', 'jeans', 'jacket', 't-shirt',
-      'pants', 'sweater', 'trouser', 'skirt', 'dress'
-    ];
+    // const clothKeywords = [
+    //   'clothing', 'apparel', 'shirt', 'jeans', 'jacket', 't-shirt',
+    //   'pants', 'sweater', 'trouser', 'skirt', 'dress'
+    // ];
 
-    const isClothing = labels.some(label => clothKeywords.includes(label));
+    // const isClothing = labels.some(label => clothKeywords.includes(label));
 
-    if (!isClothing) {
-      return res.status(400).json({
-        success: false,
-        message: 'Uploaded image does not appear to be clothing.'
-      });
-    }
-
+    // if (!isClothing) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: 'Uploaded image does not appear to be clothing.'
+    //   });
+    // }
+    const isClothing = true;
     // Generate donation code
     const code = 'DONATE' + Math.floor(1000 + Math.random() * 9000);
 

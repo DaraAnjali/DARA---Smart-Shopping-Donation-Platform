@@ -27,7 +27,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://dara-shopdonate.netlify.app'
+}));
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
@@ -139,7 +141,7 @@ app.post('/upload-donation', upload.single('image'), async (req, res) => {
   const imagePath = path.join(__dirname, req.file.path);
 
   // Use BASE_URL from env or fallback to localhost
-  const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
+  const BASE_URL = process.env.BASE_URL;
   const imageUrl = `${BASE_URL}/uploads/${req.file.filename}`;
 
   try {
